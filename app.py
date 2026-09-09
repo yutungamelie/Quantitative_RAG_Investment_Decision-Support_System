@@ -8,14 +8,15 @@ from exports.export_utils import build_export_payload, payload_to_json_string
 
 
 st.set_page_config(
-    page_title="股票要賺錢",
+    page_title="Quantitative RAG Investment Decision-Support System",
     page_icon="$",
     layout="wide",
 )
 
-st.title("股票要賺錢")
+st.title("Quantitative RAG Investment Decision-Support System")
+st.caption("台股量化 RAG 投資決策輔助系統")
 st.write(
-    "這是 Day 6 MVP：目前已完成 Streamlit 投資助理介面、股票評分表、RAG 引用資料、對話紀錄與 JSON 匯出。"
+    "設定資金與股票池，檢視量化評分、資金配置與分析來源，並匯出本次討論紀錄。"
 )
 
 st.warning(
@@ -84,13 +85,11 @@ def position_plan_to_dataframe(plan: list[dict]) -> pd.DataFrame:
 
 
 with st.sidebar:
-    st.header("目前進度")
-    st.write("Day 1：Streamlit 介面完成")
-    st.write("Day 2：台股資料查詢完成")
-    st.write("Day 3：量化評分模型完成")
-    st.write("Day 4：RAG 知識庫完成")
-    st.write("Day 5：量化 + RAG + LLM 決策整合完成")
-    st.write("Day 6：Web App 介面與紀錄匯出完成")
+    st.header("使用方式")
+    st.write("1. 設定可用資金與股票池")
+    st.write("2. 輸入問題，產生分析")
+    st.write("3. 檢視評分、配置與參考資料")
+    st.write("4. 追問或匯出 JSON 紀錄")
 
     st.divider()
 

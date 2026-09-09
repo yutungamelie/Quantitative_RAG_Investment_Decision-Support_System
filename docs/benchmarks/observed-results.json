@@ -1,0 +1,1499 @@
+{
+  "schema_version": 1,
+  "project": "Quantitative RAG Investment Decision-Support System",
+  "report_kind": "Derived summary of previously recorded local experiments",
+  "live_experiments_rerun_for_this_update": false,
+  "scope": "Source-level retrieval and application-response measurements; no investment-return or factual-accuracy evaluation.",
+  "provenance": {
+    "reference_repository": "yutungamelie/Quantitative_RAG_Investment_Decision-Support_System",
+    "reference_commit": "2658791aef7a6737cc6bc3ed278e9eb1780c1817",
+    "latency_source_verification": [
+      {
+        "kind": "source",
+        "path": "env_settings.py",
+        "logged_sha256": "09f90d33683f582226dcb0a080e927b76143d28c26a67632c6e367ad4a444847",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "data/__init__.py",
+        "logged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matching_bytes": "exact"
+      },
+      {
+        "kind": "source",
+        "path": "data/stock_prices.py",
+        "logged_sha256": "3e89495ab75e13ec147592776895a642dd3dd3e7bf88520178174d00de880220",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "data/tickers.py",
+        "logged_sha256": "c19a4f1fa4b65dd57dd9bcf2820947462522b93745de05fdb760e01005f4aa5b",
+        "matching_bytes": "exact"
+      },
+      {
+        "kind": "source",
+        "path": "quant/__init__.py",
+        "logged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matching_bytes": "exact"
+      },
+      {
+        "kind": "source",
+        "path": "quant/indicators.py",
+        "logged_sha256": "e8b7fc13f0e72176c695c53395dcfc32641e1229613f033e53576ae5c335ab95",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "quant/scoring.py",
+        "logged_sha256": "17ad851b9da4a8241e493c2e96ed30339ee0011a51578ddf44bd693e63040e02",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "decision/__init__.py",
+        "logged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matching_bytes": "exact"
+      },
+      {
+        "kind": "source",
+        "path": "decision/candidate_selector.py",
+        "logged_sha256": "425c46f8ddb1c72cabca2b7847447dbb3078843e05d3c663fd02ab2841449a37",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "decision/final_decision_chain.py",
+        "logged_sha256": "a2d722e29d0ca48f84f179f66b54be9b23edc308c1ab759156c0017b2a4cb952",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "decision/position_sizing.py",
+        "logged_sha256": "e40607be4affed52910ae059a81f7221fc698cf21853ab87e2fffababed43318",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/build_vector_db.py",
+        "logged_sha256": "7622d3bc62d3504655cc5164e322549b2ab55ad740a9b7139bd8369d53f21abe",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/chains.py",
+        "logged_sha256": "0f54dccd82f1956055601e8bf2b8e4570547b553c138d4b6d825d082d53510cd",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/llm.py",
+        "logged_sha256": "ecb22311f171671fd129f6c1ab3edc5519cad133d1597f39334652d49f90fcf0",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/rag_chain.py",
+        "logged_sha256": "d7fed37c241cf3e9cbd5d69394559edb6b164aefb4dba466f114f02c311edd88",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/retriever.py",
+        "logged_sha256": "8c536fe8a7a6b21f368d7e6539f61f03ed691fa5f146fc39852363cfd68a7411",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/score_chain.py",
+        "logged_sha256": "5c2daa1dd102133270a65b5349787ffcbdbfe3ac24a9cd245b8ffc67a02b461b",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "rag/stock_chain.py",
+        "logged_sha256": "fe9bdfad0a0c8439c8c660d1eb41d920e332d5ccd829716fb4a707cacf130b7c",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "tests/__init__.py",
+        "logged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matching_bytes": "exact"
+      },
+      {
+        "kind": "source",
+        "path": "tests/eval_cases.py",
+        "logged_sha256": "ce2cc1c775d9414c1adb35a853c3bdeb9861b9205953aa72358d6a6afec236ad",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "tests/run_all_tests.py",
+        "logged_sha256": "6f967b116beb62f15f3cd955fde951b312a0ea92397c744c80b728acf6b687cb",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "tests/test_final_decision.py",
+        "logged_sha256": "1f5161d4f36b89fd170e4a8ca295a103e4fec1f23d16d63e94d2c36f443efca7",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "source",
+        "path": "tests/test_rag_retrieval.py",
+        "logged_sha256": "c17454d558c776146dacca43a881abbe9d0a958cda9ec8137b97b0a3e34d9371",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "corpus",
+        "path": "etf_0050_rules.md",
+        "logged_sha256": "b95a63a6d65c58f72efdb2e81716953ae1a458e0cf232097880cc1f627636a41",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "corpus",
+        "path": "investment_rules.md",
+        "logged_sha256": "5363df0329cdef9d37b3745f7424275f6d7a62b069438ca5149db3c3465839ac",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "corpus",
+        "path": "risk_control_rules.md",
+        "logged_sha256": "14c8489fcb7f71c6ee61c72ba380e73bee9e351ba6bf4ae400a027f65abffd94",
+        "matching_bytes": "LF_to_CRLF"
+      },
+      {
+        "kind": "corpus",
+        "path": "tsmc_2330_rules.md",
+        "logged_sha256": "ae1c800630b79755be58ff1b696b16d4d2eac8e67872f8df4e1cf693722d3f0d",
+        "matching_bytes": "LF_to_CRLF"
+      }
+    ],
+    "latency_source_verification_note": "All 23 source and 4 corpus fingerprints match reference-commit bytes directly or after LF-to-CRLF conversion. Existing UTF-8 BOMs are preserved.",
+    "initial_live_source_version": "Not pinned by the initial live log; no source manifest is present in that report.",
+    "duplicate_excluded": "latency_profile(1).json is byte-identical to latency_profile.json and is counted once.",
+    "omitted_fields": [
+      "Full questions and answers",
+      "Full reference passages",
+      "Machine-specific paths",
+      "Market-price values and full allocation payloads"
+    ]
+  },
+  "initial_live_evaluation": {
+    "source_filename": "stock_ai_live_metrics.json",
+    "source_sha256": "2d961ec23f0cc1d996da1293bcd80a5b005d82a17e6413c7e3acdcbd2bfa8da4",
+    "started_at_utc": "2026-09-07T14:20:33.974725+00:00",
+    "finished_at_utc": "2026-09-07T14:24:45.856287+00:00",
+    "mode": "live",
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "gemini_model": "gemini-3.5-flash",
+    "embedding_model": "models/gemini-embedding-001",
+    "versions": {
+      "langchain-text-splitters": "1.1.2",
+      "langchain-chroma": "1.1.0",
+      "langchain-google-genai": "4.2.5",
+      "chromadb": "1.5.9",
+      "pandas": "3.0.3",
+      "yfinance": "1.4.1"
+    },
+    "protocol": "Sequential run, no warm-up, existing 10 cases. Final-answer latency includes price fetching, scoring, RAG retrieval, and Gemini generation. API failures are excluded from success latency and reported separately.",
+    "documents": 4,
+    "configured_instruments": 11,
+    "instrument_types": {
+      "ETF": 5,
+      "Stock": 6
+    },
+    "unique_questions": 10,
+    "expected_source_labels": 18,
+    "expected_keyword_labels": 39,
+    "chunks": 8,
+    "indexed_chunks": 8,
+    "chunking_config": {
+      "chunk_size": 500,
+      "chunk_overlap": 100,
+      "separators": [
+        "\n\n",
+        "\n",
+        "。",
+        "，",
+        " ",
+        ""
+      ]
+    },
+    "chunks_per_file": [
+      {
+        "filename": "etf_0050_rules.md",
+        "chunks": 2
+      },
+      {
+        "filename": "investment_rules.md",
+        "chunks": 2
+      },
+      {
+        "filename": "risk_control_rules.md",
+        "chunks": 2
+      },
+      {
+        "filename": "tsmc_2330_rules.md",
+        "chunks": 2
+      }
+    ],
+    "index_build_seconds": 3.8077312000095844,
+    "citation_coverage": null,
+    "citation_coverage_note": "Requires claim-level annotation and evidence checking; reference-list presence is not citation coverage.",
+    "retrieval": {
+      "original_passed": 10,
+      "total": 10,
+      "at_k": {
+        "1": {
+          "n": 10,
+          "hit_rate": 1,
+          "macro_source_recall": 0.6,
+          "mrr_at_k": 1.0
+        },
+        "3": {
+          "n": 10,
+          "hit_rate": 1,
+          "macro_source_recall": 0.85,
+          "mrr_at_k": 1.0
+        },
+        "5": {
+          "n": 10,
+          "hit_rate": 1,
+          "macro_source_recall": 0.95,
+          "mrr_at_k": 1.0
+        }
+      },
+      "latency": {
+        "n": 10,
+        "mean_seconds": 2.04962728000246,
+        "median_seconds": 2.017260150052607,
+        "p95_seconds_nearest_rank": 2.4061118999961764
+      },
+      "note": "@1 and @3 use prefixes of the existing top-5 results. Source labels do not establish passage-level answer correctness.",
+      "rows": [
+        {
+          "id": "q01",
+          "expected_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md"
+          ],
+          "retrieved_sources": [
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "etf_0050_rules.md",
+            "risk_control_rules.md",
+            "investment_rules.md"
+          ],
+          "hit_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q02",
+          "expected_sources": [
+            "etf_0050_rules.md",
+            "investment_rules.md"
+          ],
+          "retrieved_sources": [
+            "etf_0050_rules.md",
+            "etf_0050_rules.md",
+            "investment_rules.md",
+            "risk_control_rules.md",
+            "risk_control_rules.md"
+          ],
+          "hit_sources": [
+            "etf_0050_rules.md",
+            "investment_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q03",
+          "expected_sources": [
+            "tsmc_2330_rules.md",
+            "investment_rules.md"
+          ],
+          "retrieved_sources": [
+            "tsmc_2330_rules.md",
+            "tsmc_2330_rules.md",
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "etf_0050_rules.md"
+          ],
+          "hit_sources": [
+            "tsmc_2330_rules.md",
+            "investment_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q04",
+          "expected_sources": [
+            "tsmc_2330_rules.md",
+            "risk_control_rules.md"
+          ],
+          "retrieved_sources": [
+            "tsmc_2330_rules.md",
+            "tsmc_2330_rules.md",
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "investment_rules.md"
+          ],
+          "hit_sources": [
+            "tsmc_2330_rules.md",
+            "risk_control_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q05",
+          "expected_sources": [
+            "risk_control_rules.md",
+            "investment_rules.md"
+          ],
+          "retrieved_sources": [
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "investment_rules.md",
+            "etf_0050_rules.md",
+            "tsmc_2330_rules.md"
+          ],
+          "hit_sources": [
+            "risk_control_rules.md",
+            "investment_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q06",
+          "expected_sources": [
+            "investment_rules.md"
+          ],
+          "retrieved_sources": [
+            "investment_rules.md",
+            "investment_rules.md",
+            "risk_control_rules.md",
+            "etf_0050_rules.md",
+            "risk_control_rules.md"
+          ],
+          "hit_sources": [
+            "investment_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q07",
+          "expected_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md"
+          ],
+          "retrieved_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "risk_control_rules.md",
+            "tsmc_2330_rules.md"
+          ],
+          "hit_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q08",
+          "expected_sources": [
+            "risk_control_rules.md"
+          ],
+          "retrieved_sources": [
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "investment_rules.md",
+            "etf_0050_rules.md",
+            "risk_control_rules.md"
+          ],
+          "hit_sources": [
+            "risk_control_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q09",
+          "expected_sources": [
+            "risk_control_rules.md",
+            "tsmc_2330_rules.md"
+          ],
+          "retrieved_sources": [
+            "risk_control_rules.md",
+            "risk_control_rules.md",
+            "investment_rules.md",
+            "tsmc_2330_rules.md",
+            "investment_rules.md"
+          ],
+          "hit_sources": [
+            "risk_control_rules.md",
+            "tsmc_2330_rules.md"
+          ],
+          "passed": true
+        },
+        {
+          "id": "q10",
+          "expected_sources": [
+            "investment_rules.md",
+            "risk_control_rules.md"
+          ],
+          "retrieved_sources": [
+            "investment_rules.md",
+            "tsmc_2330_rules.md",
+            "investment_rules.md",
+            "tsmc_2330_rules.md",
+            "etf_0050_rules.md"
+          ],
+          "hit_sources": [
+            "investment_rules.md"
+          ],
+          "passed": true
+        }
+      ]
+    },
+    "answers": {
+      "total": 10,
+      "successes": 10,
+      "original_passed": 10,
+      "strict_passed": 10,
+      "latency_successes_only": {
+        "n": 10,
+        "mean_seconds": 21.123626520042308,
+        "median_seconds": 20.864308550138958,
+        "p95_seconds_nearest_rank": 26.587593900039792
+      },
+      "reference_list_presence_rate_successes_only": 1.0,
+      "note": "Keyword/disclaimer checks are not factual accuracy. Review saved answers and references to annotate citation coverage.",
+      "rows": [
+        {
+          "id": "q01",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 24.162806800100952,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "分批",
+            "風險",
+            "資金",
+            "不保證獲利"
+          ]
+        },
+        {
+          "id": "q02",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 18.05817269999534,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "0050",
+            "分批",
+            "ETF"
+          ]
+        },
+        {
+          "id": "q03",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 18.35820490005426,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "台積電",
+            "追高",
+            "觀望",
+            "分批"
+          ]
+        },
+        {
+          "id": "q04",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 18.328075799858198,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "單一個股",
+            "30%",
+            "風險"
+          ]
+        },
+        {
+          "id": "q05",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 26.587593900039792,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "ETF",
+            "個股",
+            "45%",
+            "30%"
+          ]
+        },
+        {
+          "id": "q06",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 18.086269299965352,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "觀望",
+            "等待",
+            "分數",
+            "趨勢"
+          ]
+        },
+        {
+          "id": "q07",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 20.887986600166187,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "保留現金",
+            "市場",
+            "過熱",
+            "觀望"
+          ]
+        },
+        {
+          "id": "q08",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 21.42948150006123,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "觀望",
+            "等待",
+            "價格",
+            "決策"
+          ]
+        },
+        {
+          "id": "q09",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 20.84063050011173,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "零股",
+            "小資金",
+            "分批"
+          ]
+        },
+        {
+          "id": "q10",
+          "success": true,
+          "passed": true,
+          "strict_passed": true,
+          "elapsed_seconds": 24.49704320007004,
+          "has_risk_disclaimer": true,
+          "hit_keywords": [
+            "風險",
+            "分批",
+            "追高",
+            "配置"
+          ]
+        }
+      ]
+    },
+    "top_level_error_count": 0
+  },
+  "latency_experiments": [
+    {
+      "source_filename": "latency_profile.json",
+      "source_sha256": "40d5b520ed50df7b977795ce94d596cec86e4f26827cc7bab4a98ee152934283",
+      "started_at_utc": "2026-09-08T03:26:04.629624+00:00",
+      "updated_at_utc": "2026-09-08T03:27:04.937947+00:00",
+      "status": "completed",
+      "mode": "profile",
+      "experiment": null,
+      "python": "3.13.5",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "stock_pool": [
+        "0050",
+        "006208",
+        "00878",
+        "00919",
+        "2330"
+      ],
+      "cash": 70224,
+      "cache_ttl_seconds": 300,
+      "rounds": 1,
+      "unique_questions": 2,
+      "case_ids": [
+        "q01",
+        "q02"
+      ],
+      "answer_calls_planned": 2,
+      "protocol": "Sequential paired trials; baseline/variant order alternates. No answer caching. Market-cache TTL includes misses and expires normally. Compare only pairs with all 5 candidates and identical observed price data plus base prompt inputs. No fixed price snapshot is imposed; changing data is detected and excluded from matched comparisons. First-use and warm requests are recorded separately.",
+      "quality_note": "Keyword/disclaimer checks and structured allocation checks do not verify factual accuracy, citation coverage, or numbers in generated prose. Review answers manually before making quality-preservation claims.",
+      "latency_note": "End-to-end timing includes data fetching, scoring, retrieval, chain setup, generation, and formatting; one-time index creation and imports are excluded. No first-token/streaming measurement.",
+      "concise_instruction": null,
+      "versions": {
+        "langchain-core": "1.4.3",
+        "langchain-google-genai": "4.2.5",
+        "langchain-chroma": "1.1.0",
+        "chromadb": "1.5.9",
+        "pandas": "3.0.3",
+        "yfinance": "1.4.1"
+      },
+      "gemini_model": "gemini-3.5-flash",
+      "index_setup_s": 2.4564170001540333,
+      "indexed_chunks": 8,
+      "summary": {
+        "baseline": {
+          "attempts": 2,
+          "successes": 2,
+          "checks_passed": 2,
+          "successful_latency": {
+            "n": 2,
+            "mean_s": 21.321971750003286,
+            "median_s": 21.321971750003286,
+            "p95_s_nearest_rank": 23.037397400010377
+          },
+          "stage_mean_s_successes_only": {
+            "market_data": 2.4684945499757305,
+            "scoring_and_ranking": 0.018753300071693957,
+            "retrieval": 1.2364536499371752,
+            "chain_setup": 0.44130655005574226,
+            "llm_generation": 17.156768099986948,
+            "other": 0.00019559997599571943
+          },
+          "answer_characters": {
+            "n": 2,
+            "mean": 2246.5,
+            "median": 2246.5,
+            "p95": 2265
+          },
+          "market_cache_state_counts": {
+            "cold_or_disabled": 2
+          },
+          "resource_warm_requests": 0
+        }
+      },
+      "rows": [
+        {
+          "case_id": "q01",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 23.037397400010377,
+          "answer_characters": 2265,
+          "stage_s": {
+            "market_data": 3.5838842997327447,
+            "scoring_and_ranking": 0.019037000369280577,
+            "retrieval": 1.3298583999276161,
+            "chain_setup": 0.4426713001448661,
+            "llm_generation": 17.661725499900058,
+            "other": 0.00022089993581175804
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "4df2443f9b11fc23ce08648c7545ba0cb2997ccaa357ab0e2c2d102f82d4134c",
+          "base_prompt_input_fingerprint": "06f5cc5921c75ae4cdd42abe3b973b32d4fc18d036150baf6b19e04d8c4a90f0",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 19.606546099996194,
+          "answer_characters": 2228,
+          "stage_s": {
+            "market_data": 1.3531048002187163,
+            "scoring_and_ranking": 0.018469599774107337,
+            "retrieval": 1.1430488999467343,
+            "chain_setup": 0.4399417999666184,
+            "llm_generation": 16.65181070007384,
+            "other": 0.00017030001617968082
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "0b6ba94b70fd93c90c54567e68a4308a578a24b51947798250b7ee31938c61fa",
+          "base_prompt_input_fingerprint": "a377caa0079d981b1cecd81e2e45ac8671d30690e365e4c3df00774d8151a755",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        }
+      ],
+      "top_level_error_count": 0,
+      "failed_rows": 0,
+      "derived_llm_generation_share_of_mean_total": 0.8046520416191952
+    },
+    {
+      "source_filename": "latency_smoke_concise.json",
+      "source_sha256": "bc873e18e9cf4aecf46db57e6a8f131388e4d488e61e4d343e38071407f46494",
+      "started_at_utc": "2026-09-08T03:34:20.395236+00:00",
+      "updated_at_utc": "2026-09-08T03:36:55.010203+00:00",
+      "status": "completed",
+      "mode": "compare",
+      "experiment": "concise",
+      "python": "3.13.5",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "stock_pool": [
+        "0050",
+        "006208",
+        "00878",
+        "00919",
+        "2330"
+      ],
+      "cash": 70224,
+      "cache_ttl_seconds": 300,
+      "rounds": 2,
+      "unique_questions": 2,
+      "case_ids": [
+        "q01",
+        "q02"
+      ],
+      "answer_calls_planned": 8,
+      "protocol": "Sequential paired trials; baseline/variant order alternates. No answer caching. Market-cache TTL includes misses and expires normally. Compare only pairs with all 5 candidates and identical observed price data plus base prompt inputs. No fixed price snapshot is imposed; changing data is detected and excluded from matched comparisons. First-use and warm requests are recorded separately.",
+      "quality_note": "Keyword/disclaimer checks and structured allocation checks do not verify factual accuracy, citation coverage, or numbers in generated prose. Review answers manually before making quality-preservation claims.",
+      "latency_note": "End-to-end timing includes data fetching, scoring, retrieval, chain setup, generation, and formatting; one-time index creation and imports are excluded. No first-token/streaming measurement.",
+      "concise_instruction": "\n\n額外的表達要求：請精簡回答，保留系統要求的六個段落，全文以約 400 個中文字為目標。避免重複解釋；保留股票代號、分數、建議金額、股數、重要風險與不保證獲利的聲明。不得為了縮短而改動數值。",
+      "versions": {
+        "langchain-core": "1.4.3",
+        "langchain-google-genai": "4.2.5",
+        "langchain-chroma": "1.1.0",
+        "chromadb": "1.5.9",
+        "pandas": "3.0.3",
+        "yfinance": "1.4.1"
+      },
+      "gemini_model": "gemini-3.5-flash",
+      "index_setup_s": 1.9672934000845999,
+      "indexed_chunks": 8,
+      "summary": {
+        "baseline": {
+          "attempts": 4,
+          "successes": 4,
+          "checks_passed": 4,
+          "successful_latency": {
+            "n": 4,
+            "mean_s": 22.340814700059127,
+            "median_s": 22.552398600033484,
+            "p95_s_nearest_rank": 24.073077900102362
+          },
+          "stage_mean_s_successes_only": {
+            "market_data": 1.4976517251343466,
+            "scoring_and_ranking": 0.01698822487378493,
+            "retrieval": 1.178548225085251,
+            "chain_setup": 0.44259722501737997,
+            "llm_generation": 19.20487235003384,
+            "other": 0.00015694991452619433
+          },
+          "answer_characters": {
+            "n": 4,
+            "mean": 2257.25,
+            "median": 2223.0,
+            "p95": 2438
+          },
+          "market_cache_state_counts": {
+            "cold_or_disabled": 4
+          },
+          "resource_warm_requests": 0
+        },
+        "concise": {
+          "attempts": 4,
+          "successes": 4,
+          "checks_passed": 4,
+          "successful_latency": {
+            "n": 4,
+            "mean_s": 14.935505850007758,
+            "median_s": 15.163727049948648,
+            "p95_s_nearest_rank": 16.336412800010294
+          },
+          "stage_mean_s_successes_only": {
+            "market_data": 1.190615324943792,
+            "scoring_and_ranking": 0.016862675081938505,
+            "retrieval": 1.1101662250584923,
+            "chain_setup": 0.44582175003597513,
+            "llm_generation": 12.17188342497684,
+            "other": 0.00015644991071894765
+          },
+          "answer_characters": {
+            "n": 4,
+            "mean": 728.25,
+            "median": 741.5,
+            "p95": 759
+          },
+          "market_cache_state_counts": {
+            "cold_or_disabled": 4
+          },
+          "resource_warm_requests": 0
+        },
+        "matched_comparison": {
+          "eligible_pairs": 0,
+          "excluded_pairs": {
+            "market_data_changed": 4
+          },
+          "baseline": null,
+          "variant": null,
+          "median_reduction_percent": null,
+          "baseline_checks_passed": 0,
+          "variant_checks_passed": 0,
+          "manual_answer_review_required": true
+        }
+      },
+      "rows": [
+        {
+          "case_id": "q01",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 24.073077900102362,
+          "answer_characters": 2438,
+          "stage_s": {
+            "market_data": 1.9626342002302408,
+            "scoring_and_ranking": 0.020970499608665705,
+            "retrieval": 1.0930006999988109,
+            "chain_setup": 0.44290459994226694,
+            "llm_generation": 20.55337360012345,
+            "other": 0.0001943001989275217
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "6d6f154327a9ea00423fe2dd0c06dc941fc7b807759edbf852ebadd02005ae27",
+          "base_prompt_input_fingerprint": "0b39dbe97406502116d2bea0963c5f40a2316540ef0e7c3680258625935ff18c",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 1,
+          "variant": "concise",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 16.336412800010294,
+          "answer_characters": 759,
+          "stage_s": {
+            "market_data": 1.1588824002537876,
+            "scoring_and_ranking": 0.014171899762004614,
+            "retrieval": 1.096129700075835,
+            "chain_setup": 0.4454993000254035,
+            "llm_generation": 13.621559099992737,
+            "other": 0.00017039990052580833
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "39b3507edc03485e27543483e54a55ff835a8b0ed595aa476733731c4040a160",
+          "base_prompt_input_fingerprint": "201086b46b363d0258cbb6795df86759816b97561bb1a2009796d61bebb48650",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 1,
+          "variant": "concise",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 14.394621999934316,
+          "answer_characters": 671,
+          "stage_s": {
+            "market_data": 1.1892712996341288,
+            "scoring_and_ranking": 0.01631030044518411,
+            "retrieval": 1.0651390000712126,
+            "chain_setup": 0.44177110004238784,
+            "llm_generation": 11.682000600034371,
+            "other": 0.00012969970703125
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "41647361567b34e853b3f9ff324c00aa96f72b15038b1539bceaa61d291722f3",
+          "base_prompt_input_fingerprint": "720ae037ddae29e36dcc1e31c88f8d12aed6f795b0349347cc6a75b6f8003fea",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 20.185383700067177,
+          "answer_characters": 2145,
+          "stage_s": {
+            "market_data": 1.183726100018248,
+            "scoring_and_ranking": 0.01585009996779263,
+            "retrieval": 1.3476147002074867,
+            "chain_setup": 0.4454726001713425,
+            "llm_generation": 17.192594700027257,
+            "other": 0.00012549967505037785
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "ae0076522b4dc20596c78284b2cfac3dcf7952c75c16f5096fa455e2cd8306e3",
+          "base_prompt_input_fingerprint": "720ae037ddae29e36dcc1e31c88f8d12aed6f795b0349347cc6a75b6f8003fea",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 2,
+          "variant": "concise",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 15.93283209996298,
+          "answer_characters": 734,
+          "stage_s": {
+            "market_data": 1.2021025998983532,
+            "scoring_and_ranking": 0.01838789996691048,
+            "retrieval": 1.188748100074008,
+            "chain_setup": 0.44618629990145564,
+            "llm_generation": 13.077244699932635,
+            "other": 0.0001625001896172762
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "2be848e8234a25987635d8551ec8d4057b936e22241b7da319db641edffdde8d",
+          "base_prompt_input_fingerprint": "9d1ce9ec17a404b3839adaad97b1023348afe061ed5848b1748ee166f72a38ef",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 2,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 21.09998010005802,
+          "answer_characters": 2230,
+          "stage_s": {
+            "market_data": 1.1727076002862304,
+            "scoring_and_ranking": 0.014503799844533205,
+            "retrieval": 1.0712886000983417,
+            "chain_setup": 0.43780339998193085,
+            "llm_generation": 18.403516000136733,
+            "other": 0.00016069971024990082
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "9ea5fbb0127c6202f59a57fe05d0bcca7be98674ec3dfa15a1b66feeb1514fa3",
+          "base_prompt_input_fingerprint": "0f33d37c5c56717b758f07c97e83bbc024dc9a5c4a5c2d65a45c5fd8ca9397a4",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 2,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 24.00481710000895,
+          "answer_characters": 2216,
+          "stage_s": {
+            "market_data": 1.6715390000026673,
+            "scoring_and_ranking": 0.016628500074148178,
+            "retrieval": 1.2022889000363648,
+            "chain_setup": 0.4442082999739796,
+            "llm_generation": 20.670005099847913,
+            "other": 0.00014730007387697697
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "f4aff32291deb9de81d715421511cfece1e895152a0cda7a6731a05a088c3bec",
+          "base_prompt_input_fingerprint": "9575f25a0109e014bdc2a95654ac8a003bc3db4540c59da461ee1ebf71461b4a",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 2,
+          "variant": "concise",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 13.078156500123441,
+          "answer_characters": 749,
+          "stage_s": {
+            "market_data": 1.2122049999888986,
+            "scoring_and_ranking": 0.018580600153654814,
+            "retrieval": 1.0906481000129133,
+            "chain_setup": 0.44983030017465353,
+            "llm_generation": 10.30672929994762,
+            "other": 0.00016319984570145607
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "753fadf3548d10f864f72a286d2bea7a73fd002d00190523647d6eee035c3b98",
+          "base_prompt_input_fingerprint": "dfdcc91c1397a50fbe3c71384c77ee28fd94a9ce52246f538f1d8fff143ab24a",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        }
+      ],
+      "top_level_error_count": 0,
+      "failed_rows": 0
+    },
+    {
+      "source_filename": "latency_smoke_cache.json",
+      "source_sha256": "dc5e36ea726671e16eed5d2865b2b1b72a7e2245fdaa8baa36dc995e4dd05f9f",
+      "started_at_utc": "2026-09-08T03:39:18.391510+00:00",
+      "updated_at_utc": "2026-09-08T03:43:17.309720+00:00",
+      "status": "completed",
+      "mode": "compare",
+      "experiment": "market_cache",
+      "python": "3.13.5",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "stock_pool": [
+        "0050",
+        "006208",
+        "00878",
+        "00919",
+        "2330"
+      ],
+      "cash": 70224,
+      "cache_ttl_seconds": 300,
+      "rounds": 2,
+      "unique_questions": 2,
+      "case_ids": [
+        "q01",
+        "q02"
+      ],
+      "answer_calls_planned": 8,
+      "protocol": "Sequential paired trials; baseline/variant order alternates. No answer caching. Market-cache TTL includes misses and expires normally. Compare only pairs with all 5 candidates and identical observed price data plus base prompt inputs. No fixed price snapshot is imposed; changing data is detected and excluded from matched comparisons. First-use and warm requests are recorded separately.",
+      "quality_note": "Keyword/disclaimer checks and structured allocation checks do not verify factual accuracy, citation coverage, or numbers in generated prose. Review answers manually before making quality-preservation claims.",
+      "latency_note": "End-to-end timing includes data fetching, scoring, retrieval, chain setup, generation, and formatting; one-time index creation and imports are excluded. No first-token/streaming measurement.",
+      "concise_instruction": null,
+      "versions": {
+        "langchain-core": "1.4.3",
+        "langchain-google-genai": "4.2.5",
+        "langchain-chroma": "1.1.0",
+        "chromadb": "1.5.9",
+        "pandas": "3.0.3",
+        "yfinance": "1.4.1"
+      },
+      "gemini_model": "gemini-3.5-flash",
+      "index_setup_s": 2.092863199999556,
+      "indexed_chunks": 8,
+      "summary": {
+        "baseline": {
+          "attempts": 4,
+          "successes": 2,
+          "checks_passed": 2,
+          "successful_latency": {
+            "n": 2,
+            "mean_s": 26.087358049931936,
+            "median_s": 26.087358049931936,
+            "p95_s_nearest_rank": 30.719983199844137
+          },
+          "stage_mean_s_successes_only": {
+            "market_data": 1.632211949909106,
+            "scoring_and_ranking": 0.014727150090038776,
+            "retrieval": 1.1250823999289423,
+            "chain_setup": 0.4467806000029668,
+            "llm_generation": 22.86839669989422,
+            "other": 0.00015925010666251183
+          },
+          "answer_characters": {
+            "n": 2,
+            "mean": 2176.5,
+            "median": 2176.5,
+            "p95": 2201
+          },
+          "market_cache_state_counts": {
+            "cold_or_disabled": 4
+          },
+          "resource_warm_requests": 0
+        },
+        "market_cache": {
+          "attempts": 4,
+          "successes": 3,
+          "checks_passed": 3,
+          "successful_latency": {
+            "n": 3,
+            "mean_s": 21.996349666655686,
+            "median_s": 21.551980499876663,
+            "p95_s_nearest_rank": 23.098265800159425
+          },
+          "stage_mean_s_successes_only": {
+            "market_data": 0.4013944666367024,
+            "scoring_and_ranking": 0.017982600023970008,
+            "retrieval": 1.1389982333251585,
+            "chain_setup": 0.44423783329936367,
+            "llm_generation": 19.993595633267734,
+            "other": 0.00014090010275443396
+          },
+          "answer_characters": {
+            "n": 3,
+            "mean": 2122.3333333333335,
+            "median": 2111,
+            "p95": 2297
+          },
+          "market_cache_state_counts": {
+            "cold_or_disabled": 1,
+            "warm": 3
+          },
+          "resource_warm_requests": 0
+        },
+        "matched_comparison": {
+          "eligible_pairs": 0,
+          "excluded_pairs": {
+            "market_data_changed": 2,
+            "generation_failure": 2
+          },
+          "baseline": null,
+          "variant": null,
+          "median_reduction_percent": null,
+          "baseline_checks_passed": 0,
+          "variant_checks_passed": 0,
+          "manual_answer_review_required": true
+        },
+        "warm_matched_comparison": {
+          "eligible_pairs": 0,
+          "excluded_pairs": {
+            "market_data_changed": 2,
+            "generation_failure": 2
+          },
+          "baseline": null,
+          "variant": null,
+          "median_reduction_percent": null,
+          "baseline_checks_passed": 0,
+          "variant_checks_passed": 0,
+          "manual_answer_review_required": true
+        }
+      },
+      "rows": [
+        {
+          "case_id": "q01",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 21.454732900019735,
+          "answer_characters": 2152,
+          "stage_s": {
+            "market_data": 1.9025336997583508,
+            "scoring_and_ranking": 0.01571160019375384,
+            "retrieval": 1.131204199977219,
+            "chain_setup": 0.4427420999854803,
+            "llm_generation": 17.962384899845347,
+            "other": 0.00015640025958418846
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "2466d345d4716a68973afba2017c70d849cd8d96e1682287281f89bf5010c122",
+          "base_prompt_input_fingerprint": "18747b4823f3ee375a9fefcf3be509e4fa1e0ba9e85305954f6480571f2db6a7",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 1,
+          "variant": "market_cache",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 23.098265800159425,
+          "answer_characters": 1959,
+          "stage_s": {
+            "market_data": 1.2028337002266198,
+            "scoring_and_ranking": 0.016060899710282683,
+            "retrieval": 1.0905931000597775,
+            "chain_setup": 0.4455236999783665,
+            "llm_generation": 20.343098599929363,
+            "other": 0.00015580025501549244
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "82b1a5ff1c76424ba48a59644e59f1dff2ace402ae2bc59f3b3993ccde497667",
+          "base_prompt_input_fingerprint": "42a480b7e26d21050fa9625b9d13dbc92ee21f7cf202bf211bd708cdceddce06",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 1,
+          "variant": "market_cache",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 21.338802699930966,
+          "answer_characters": 2297,
+          "stage_s": {
+            "market_data": 0.00040949974209070206,
+            "scoring_and_ranking": 0.016764900414273143,
+            "retrieval": 1.1939860999118537,
+            "chain_setup": 0.44224740006029606,
+            "llm_generation": 19.68525859992951,
+            "other": 0.00013619987294077873
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "82b1a5ff1c76424ba48a59644e59f1dff2ace402ae2bc59f3b3993ccde497667",
+          "base_prompt_input_fingerprint": "c06268e9c3f203a35871033a8e09d455cb13a7252a2a8475de4dc5ebf64e4221",
+          "market_cache_state": "warm",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 1,
+          "variant": "baseline",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 30.719983199844137,
+          "answer_characters": 2201,
+          "stage_s": {
+            "market_data": 1.361890200059861,
+            "scoring_and_ranking": 0.013742699986323714,
+            "retrieval": 1.1189605998806655,
+            "chain_setup": 0.45081910002045333,
+            "llm_generation": 27.774408499943092,
+            "other": 0.0001620999537408352
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "053a7b8e7862611388db34c150ceb14b0586e5b4f484d03abaf72939fa0a294d",
+          "base_prompt_input_fingerprint": "a1e8f3b1f17cf3e78edd82fbdd51108417bc45279ed952de42a1aa18bc49254b",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 2,
+          "variant": "market_cache",
+          "success": false,
+          "checks_passed": false,
+          "end_to_end_s": 37.412900700001046,
+          "answer_characters": 1238,
+          "stage_s": {
+            "market_data": 0.0003664996474981308,
+            "scoring_and_ranking": 0.02115920023061335,
+            "retrieval": 1.2504896000027657,
+            "chain_setup": 0.43968069995753467,
+            "llm_generation": 35.701069300062954,
+            "other": 0.0001354000996798277
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "82b1a5ff1c76424ba48a59644e59f1dff2ace402ae2bc59f3b3993ccde497667",
+          "base_prompt_input_fingerprint": "42a480b7e26d21050fa9625b9d13dbc92ee21f7cf202bf211bd708cdceddce06",
+          "market_cache_state": "warm",
+          "resource_cache_warm": false,
+          "finish_reason": null,
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q01",
+          "round": 2,
+          "variant": "baseline",
+          "success": false,
+          "checks_passed": false,
+          "end_to_end_s": 39.03031040006317,
+          "answer_characters": 1238,
+          "stage_s": {
+            "market_data": 1.3131834003143013,
+            "scoring_and_ranking": 0.018781999591737986,
+            "retrieval": 1.2443055000621825,
+            "chain_setup": 0.4474488999694586,
+            "llm_generation": 36.00641650008038,
+            "other": 0.00017410004511475563
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "86b938d38fa6de453608cc3f874516b072ff9fc8d2e3c0556dc05b86bc83254e",
+          "base_prompt_input_fingerprint": "c204afa0b4ee2181be0a5fad1aaca13c25af1723ccf620e85547bd373bcd0485",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": null,
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 2,
+          "variant": "baseline",
+          "success": false,
+          "checks_passed": false,
+          "end_to_end_s": 39.00285600009374,
+          "answer_characters": 1235,
+          "stage_s": {
+            "market_data": 1.2448635001201183,
+            "scoring_and_ranking": 0.015281299827620387,
+            "retrieval": 1.3234846000559628,
+            "chain_setup": 0.4419867000542581,
+            "llm_generation": 35.97707780008204,
+            "other": 0.0001620999537408352
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "76c36bda825da7ac915fa6cee3102ee29d14d57c736f90653357b7331bc857fe",
+          "base_prompt_input_fingerprint": "e172450721823bebf2a319181fb77a5c828c7d650b9a8ee3065d06731cc2c612",
+          "market_cache_state": "cold_or_disabled",
+          "resource_cache_warm": false,
+          "finish_reason": null,
+          "decision_context_source_recall": 1.0
+        },
+        {
+          "case_id": "q02",
+          "round": 2,
+          "variant": "market_cache",
+          "success": true,
+          "checks_passed": true,
+          "end_to_end_s": 21.551980499876663,
+          "answer_characters": 2111,
+          "stage_s": {
+            "market_data": 0.0009401999413967133,
+            "scoring_and_ranking": 0.021121999947354198,
+            "retrieval": 1.1324155000038445,
+            "chain_setup": 0.4449423998594284,
+            "llm_generation": 19.952429699944332,
+            "other": 0.00013070018030703068
+          },
+          "candidate_count": 5,
+          "structured_plan_checks": {
+            "nonempty": true,
+            "within_cash_budget": true,
+            "share_counts_match": true
+          },
+          "answer_numeric_consistency": null,
+          "market_data_fingerprint": "82b1a5ff1c76424ba48a59644e59f1dff2ace402ae2bc59f3b3993ccde497667",
+          "base_prompt_input_fingerprint": "c06268e9c3f203a35871033a8e09d455cb13a7252a2a8475de4dc5ebf64e4221",
+          "market_cache_state": "warm",
+          "resource_cache_warm": false,
+          "finish_reason": "STOP",
+          "decision_context_source_recall": 1.0
+        }
+      ],
+      "top_level_error_count": 0,
+      "failed_rows": 3
+    }
+  ],
+  "unmeasured": [
+    "Claim-level citation coverage",
+    "Factual correctness",
+    "Numeric consistency in generated prose",
+    "Matched latency-reduction percentage",
+    "Resource-reuse experiment result",
+    "Investment returns"
+  ]
+}

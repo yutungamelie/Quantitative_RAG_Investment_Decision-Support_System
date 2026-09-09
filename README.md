@@ -1,177 +1,126 @@
-# 股票量化 RAG 投資助理
+# Quantitative RAG Investment Decision-Support System
 
-這是一個使用 Streamlit、LangChain、Gemini、Chroma、yfinance 建立的台股量化 RAG 投資助理。
+[繁體中文](README.zh-TW.md) · [Architecture](docs/architecture.md) · [Evaluation](docs/evaluation.md) · [Latency experiments](docs/latency-experiments.md)
 
-本專案目標是把「量化評分」、「RAG 投資規則檢索」與「LLM 投資建議整理」整合成一個可操作的 Web App。
+A **Streamlit application for reviewing Taiwan stocks and ETFs**, combining rule-based quantitative scoring, constrained cash allocation, and retrieval-augmented explanations with LangChain, Gemini, and Chroma.
 
-## Live Demo
+The application turns a question, cash budget, and selected stock pool into a ranked score table, an allocation plan, an explanation in Traditional Chinese, and inspectable reference passages. Numerical scores and allocations are calculated in Python before the LLM generates its explanation.
 
-[點此開啟 Streamlit App](https://stockaiassistant.streamlit.app/)
+**Status:** working application prototype with a small local evaluation. The current implementation targets Taiwan instruments; broader market support is a future extension.
 
-## Demo 功能
+[Hosted demo](https://stockaiassistant.streamlit.app/) · [Application entry point](app.py) · [Recorded benchmark summary](docs/benchmarks/observed-results.json)
 
-- 輸入可用資金
-- 選擇台股 / ETF 股票池
-- 自動計算量化分數
-- 產生建議資金配置
-- 使用 RAG 引用投資規則
-- 產生投資建議說明
-- 顯示 RAG 引用資料
-- 保存對話紀錄
-- 匯出 JSON
+## What you can do
 
-## 技術架構
+| Capability | Implementation |
+| --- | --- |
+| Select a stock pool and cash budget | Streamlit controls with **11 configured instruments: 6 stocks and 5 ETFs**. |
+| Inspect quantitative rankings | Six months of daily Yahoo Finance history; MA20, MA60, RSI14, 20-day return and volatility; trend, momentum, and risk subscores. |
+| Review a cash allocation plan | Rank up to 5 candidates, retain a cash reserve, apply per-instrument caps, and estimate whole-share quantities. |
+| Read an explanation with its sources | Retrieve local investment-rule passages from Chroma and supply them with scores and allocations to Gemini through LangChain. |
+| Keep and export a review session | Display session conversation history and download questions, answers, scores, allocation data, and references as JSON. |
 
-```text
-使用者問題
-↓
-yfinance 取得股價資料
-↓
-量化模型計算 MA20 / MA60 / RSI / 報酬率 / 波動率
-↓
-候選股排序
-↓
-Chroma Retriever 檢索投資規則
-↓
-LangChain Prompt 整合量化分數、資金配置與 RAG 內容
-↓
-Gemini 產生投資建議
-↓
-Streamlit 顯示結果
-```
-## 使用技術
+## Measured results
 
-- Python
-- Streamlit
-- LangChain
-- Google Gemini
-- Chroma
-- yfinance
-- pandas
-- NumPy
+Results below come from saved local runs on **September 7–8, 2026**, using `gemini-3.5-flash`. They describe the recorded test conditions, not a service-level guarantee.
 
-## 專案結構
+| Evaluation | Observed result | Scope |
+| --- | --- | --- |
+| Knowledge base | **4 rule documents / 8 indexed chunks** | Curated rules, including 0050 and 2330 guidance; not company filings or a news database. |
+| Source retrieval | **100% source Hit Rate@1; 95% mean source Recall@5** | 10 annotated queries; filename-level labels over the small corpus. |
+| Response checks | **10/10 successful answers passed predefined checks** | At least 2 expected keywords plus a disclaimer; factual accuracy was not scored. |
+| Initial response latency | **20.9 s median** | 10 successful full-pipeline calls in the initial live evaluation. |
+| Concise-response prototype | **15.2 s median across 4 successful runs** | 2 questions × 2 rounds; all 4 passed keyword/disclaimer checks. |
 
-```text
-stock_ai_assistant/
-├── app.py
-├── env_settings.py
-├── requirements.txt
-├── README.md
-├── .env.example
-├── data/
-│   ├── tickers.py
-│   └── stock_prices.py
-├── quant/
-│   ├── indicators.py
-│   └── scoring.py
-├── rag/
-│   ├── build_vector_db.py
-│   ├── retriever.py
-│   └── rag_chain.py
-├── rag_docs/
-│   ├── investment_rules.md
-│   ├── etf_0050_rules.md
-│   ├── tsmc_2330_rules.md
-│   └── risk_control_rules.md
-├── decision/
-│   ├── candidate_selector.py
-│   ├── position_sizing.py
-│   └── final_decision_chain.py
-├── database/
-│   └── chat_history.py
-├── exports/
-│   └── export_utils.py
-└── tests/
-    ├── eval_cases.py
-    ├── test_rag_retrieval.py
-    ├── test_final_decision.py
-    └── run_all_tests.py
+The concise-response experiment produced **zero eligible matched pairs** because market-data fingerprints changed between baseline and variant requests. Its latency is a descriptive prototype result; a controlled percentage speedup has not been established. Citation coverage and factual correctness remain unmeasured. See the [evaluation protocol and limitations](docs/evaluation.md).
+
+## How the application works
+
+```mermaid
+flowchart TD
+    U["Question, cash and stock pool"] --> Q["Daily prices, indicators and ranking"]
+    Q --> A["Rule-based allocation"]
+    U --> R["Investment-rule retrieval"]
+    Q --> R
+    Q --> G["Gemini explanation"]
+    A --> G
+    R --> G
+    G --> V["Streamlit review and JSON export"]
+    Q --> V
+    A --> V
+    R --> V
 ```
 
-## 量化評分邏輯
+The final-decision route is implemented in [decision/final_decision_chain.py](decision/final_decision_chain.py). The [architecture notes](docs/architecture.md) explain the scoring weights, allocation denominators, retrieval query, and current failure handling.
 
-本專案目前使用以下指標建立簡化量化評分模型：
+**Core stack:** Python, pandas, Streamlit, yfinance, LangChain, Google Gemini, Chroma, and Pydantic Settings. The current application stores history in Streamlit session state; the `database/` folder does not implement a database service.
 
-- MA20
-- MA60
-- RSI14
-- 20 日報酬率
-- 20 日波動率
-- 趨勢分數
-- 動能分數
-- 風險分數
-- 總分
+## Run locally
 
-總分會產生初步決策：
+The recorded evaluation used Python **3.13.5 on Windows 11**. The pinned [requirements.txt](requirements.txt) is the existing environment snapshot. A fresh installation and live API run have not been repeated as part of this presentation update.
 
-```
-75 分以上：可配置
-60 到 74 分：觀望
-低於 60 分：避免
-```
+From PowerShell:
 
-## RAG 投資規則
-
-RAG 知識庫包含：
-
-- 不追高原則
-- 分批進場原則
-- ETF 配置上限
-- 單一個股配置上限
-- 0050 觀察規則
-- 台積電觀察規則
-- 風險控管規則
-
-## 安裝方式
-
-```bash
+```powershell
+git clone https://github.com/yutungamelie/Quantitative_RAG_Investment_Decision-Support_System.git
+cd Quantitative_RAG_Investment_Decision-Support_System
 python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env
 ```
 
-## 環境變數
+Edit `.env` with your own API key. The example model matches the recorded evaluation; use a model available to your account and record any change when benchmarking. Consult the [Gemini model catalog](https://ai.google.dev/gemini-api/docs/models) for current availability.
 
-請建立 `.env`：
-
-```
+```dotenv
 GOOGLE_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
-## 建立 RAG 向量資料庫
+Build the index once for a fresh checkout, then start the app:
 
-```bash
-python -m rag.build_vector_db
+```powershell
+.\.venv\Scripts\python.exe -m rag.build_vector_db
+.\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-## 啟動 App
+On macOS/Linux, use `.venv/bin/python` in place of `.\.venv\Scripts\python.exe`. Indexing, retrieval embeddings, and answer generation use the configured Gemini API; price requests use Yahoo Finance. The builder creates a persistent Chroma collection. Repeated builds are not an idempotent corpus refresh; use a fresh index for controlled experiments.
 
-```bash
-python -m streamlit run app.py
+## Run the evaluations
+
+The repository includes the existing query cases and the standalone measurement scripts used in the project workflow:
+
+```powershell
+# Inspect configured instruments and documents; no API calls.
+.\.venv\Scripts\python.exe stock_ai_metrics.py --repo . --output benchmark_runs/static.json
+
+# Run the 10-query retrieval and answer evaluation with live APIs.
+.\.venv\Scripts\python.exe stock_ai_metrics.py --repo . --live --output benchmark_runs/live.json
+
+# Profile two full-pipeline requests with live APIs.
+.\.venv\Scripts\python.exe stock_ai_latency_lab.py profile --repo . --questions 2 --output benchmark_runs/profile.json
 ```
 
-## 測試
+Live benchmark scripts build a separate temporary index. Experimental caching, client reuse, and concise prompting apply only inside the latency script's process; they are not enabled in the Streamlit application. Follow the [experiment guide](docs/latency-experiments.md) before interpreting a comparison.
 
-```bash
-python -m tests.run_all_tests
-python -m tests.test_rag_retrieval
-python -m tests.test_final_decision
-```
+## Repository guide
 
-## 專案亮點
+| Location | Purpose |
+| --- | --- |
+| [app.py](app.py) | Streamlit interface and session state. |
+| [data/](data/) and [quant/](quant/) | Instrument configuration, daily price fetching, indicators, and scoring. |
+| [decision/](decision/) | Ranking, allocation, and final-decision orchestration. |
+| [rag/](rag/) and [rag_docs/](rag_docs/) | Embedding/index construction, retrieval, prompts, and curated rules. |
+| [database/](database/) and [exports/](exports/) | Message helpers and JSON export. |
+| [tests/](tests/) | Annotated evaluation cases, API evaluation runners, and offline latency-harness checks. |
+| [stock_ai_metrics.py](stock_ai_metrics.py) and [stock_ai_latency_lab.py](stock_ai_latency_lab.py) | Standalone measurement tools. |
+| [docs/](docs/) | Architecture, recorded results, experimental protocol, and next steps. |
 
-- 從零建立量化交易助理 MVP
-- 串接真實台股 / ETF 股價資料
-- 使用 RAG 降低 LLM 幻覺
-- 將投資規則引用資料顯示給使用者
-- 支援資金配置與零股估算
-- 支援 JSON 匯出投資紀錄
-- 包含基本 RAG 檢索測試案例
+## Next milestones
 
-## 風險聲明
+- [ ] Freeze comparison inputs and collect more eligible latency pairs before reporting an optimization percentage.
+- [ ] Review numerical fidelity and claim-level evidence support in generated answers.
+- [ ] Benchmark resource reuse, then combine only the optimizations that pass latency and quality checks.
+- [ ] Add explicit data-freshness and partial-data indicators, richer evaluation cases, and a reproducible deployment environment.
+- [ ] Evaluate additional markets with market-specific instrument metadata, rules, and test cases.
 
-本工具僅供學習與決策輔助，不保證獲利，也不構成正式投資建議。
-
-所有投資決策仍需使用者自行判斷並承擔風險。
+This project is for learning and decision support. Its scores and allocation rules are heuristics; no investment-return backtest, profitability claim, or automated trading capability is established.

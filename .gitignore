@@ -13,3 +13,5 @@ exports/*.json
 app_day5_backup.py
 
 *.log
+
+benchmark_runs/
